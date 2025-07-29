@@ -1,3 +1,31 @@
 spring:
   application:
     name: api-producer
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  kafka:
+    bootstrap-servers: ${ENV_KAFKA_BROKERS:localhost:9091}
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 5
+      properties:
+        enable:
+          idempotence: true
+        max:
+          in:
+            flight:
+              requests: 3
+
+app:
+  setting:
+    kafka:
+      flink:
+        topic: flink_poc.flink-event
+        partition: 2
+        replica: 1
+      test:
+        topic: flink_poc.test-event
+        partition: 2
+        replica: 1
