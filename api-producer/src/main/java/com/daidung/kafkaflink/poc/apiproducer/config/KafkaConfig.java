@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class KafkaConfig {
 
     @Bean
-    @ConfigurationProperties(prefix = "app.setting.kafka.flink.topic")
+    @ConfigurationProperties(prefix = "app.setting.kafka.flink")
     BrokerSetting topicFlink() {
         return new BrokerSetting();
     }
@@ -27,7 +27,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "app.setting.kafka.test.topic")
+    @ConfigurationProperties(prefix = "app.setting.kafka.test")
     BrokerSetting topicTest() {
         return new BrokerSetting();
     }
